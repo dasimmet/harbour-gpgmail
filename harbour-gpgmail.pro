@@ -18,10 +18,14 @@ SOURCES +=
 
 OTHER_FILES += qml/harbour-gpgmail.qml \
     qml/cover/CoverPage.qml \
-    qml/pages/FirstPage.qml \
+    qml/MainPage.qml \
+    qml/pages/SettingsPage.qml \
+    qml/pages/EncryptPage.qml \
+    qml/pages/SendPage.qml \
     rpm/harbour-gpgmail.changes.in \
     rpm/harbour-gpgmail.spec \
     rpm/harbour-gpgmail.yaml \
     harbour-gpgmail.desktop \
     qml/cover/coveractions.py \
-    qml/pages/datadownloader.py
+    qml/pyLib/gnupg.py \
+    qml/pyLib/LICENSE-python-gnupg.txt
