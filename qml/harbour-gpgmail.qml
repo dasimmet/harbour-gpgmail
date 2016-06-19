@@ -6,11 +6,14 @@ import io.thp.pyotherside 1.4
 ApplicationWindow
 {
     id: "app"
-    initialPage: MainPage{}
-    cover: Qt.resolvedUrl("cover/CoverPage.qml")
-    Component.onCompleted: {
-        app.initialPage = Qt.resolvedUrl("MainPage.qml");
+    initialPage: Component{
+        Page{
+            Text{
+                text:"Loading Python Modules..."
+            }
+        }
     }
+    cover: Qt.resolvedUrl("cover/CoverPage.qml")
     Python {
         id: py
 
@@ -22,8 +25,9 @@ ApplicationWindow
             setHandler('finished', function(newvalue) {
             });
 
-            importModule('crypt', function () {});
-
+            importModule('crypt', function () {
+                pageStack.replace(mainPage,{},PageStackAction.Immediate);
+            });
         }
 
         onError: {
@@ -36,6 +40,10 @@ ApplicationWindow
             // in Python, this can be accomplished via pyotherside.send()
             console.log('got message from python: ' + data);
         }
+    }
+    Component{
+        id: mainPage
+        MainPage{}
     }
 }
 

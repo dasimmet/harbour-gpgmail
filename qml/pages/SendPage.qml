@@ -4,11 +4,10 @@ import Sailfish.Silica 1.0
 
 Item {
     id: page
-    anchors.margins: 10
     Column {
         id: cols
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenter: parent.verticalCenter
+        anchors.top: parent.top
         spacing: 10
         TextField{
             id: nameField

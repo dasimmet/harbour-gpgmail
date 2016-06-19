@@ -5,7 +5,7 @@ Item {
     id: page
     Column {
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenter: parent.verticalCenter
+        anchors.top: parent.top
         spacing: 10
         Button{
             text:"Hi"

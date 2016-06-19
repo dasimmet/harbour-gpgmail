@@ -22,6 +22,7 @@ OTHER_FILES += qml/harbour-gpgmail.qml \
     qml/pages/SettingsPage.qml \
     qml/pages/EncryptPage.qml \
     qml/pages/SendPage.qml \
+    qml/pages/FetchkeyPage.qml \
     rpm/harbour-gpgmail.changes.in \
     rpm/harbour-gpgmail.spec \
     rpm/harbour-gpgmail.yaml \

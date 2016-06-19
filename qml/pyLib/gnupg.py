@@ -416,8 +416,8 @@ class SearchKeys(list):
     '''
 
     UID_INDEX = 1
-    FIELDS = 'type keyid algo length date expires'.split()
-
+    FIELDS = 'type keyid algo length date expires revoked'.split()
+    # EDIT: added a revoked Field
     def __init__(self, gpg):
         self.gpg = gpg
         self.curkey = None
@@ -427,7 +427,10 @@ class SearchKeys(list):
     def get_fields(self, args):
         result = {}
         for i, var in enumerate(self.FIELDS):
-            result[var] = args[i]
+            if var == "revoked": # turns revoked Field into a Boolean
+                result[var] = args[i]=="r"
+            else:
+                result[var] = args[i]
         result['uids'] = []
         return result
 
@@ -689,7 +692,7 @@ class GPG(object):
     }
 
     "Encapsulate access to the gpg executable"
-    def __init__(self, gpgbinary='gpg2', gnupghome=None, verbose=False,
+    def __init__(self, gpgbinary='gpg', gnupghome=None, verbose=False,
                  use_agent=False, keyring=None, options=None,
                  secret_keyring=None):
         """Initialize a GPG process wrapper.  Options are:
